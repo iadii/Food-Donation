@@ -1,13 +1,28 @@
-# React + Vite
+# FoodShare - Reducing Food Waste, Building Community
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**FoodShare** is a React-based web application designed to connect food donors with people in need. The platform facilitates food donation, helping to reduce waste and address hunger in communities.
 
-Currently, two official plugins are available:
+## Features
+- **Easy Donations**: List surplus food in seconds and connect with those who need it  
+- **Find Food**: Browse available donations near you and request what you need  
+- **Real-time Updates**: Get notifications about donation status and pickup arrangements  
+- **Community Building**: Connect with neighbors and build stronger, more resilient communities  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technology Stack
+- React 19  
+- React Router 7  
+- Framer Motion for animations  
+- Vite for build tooling  
 
-## Expanding the ESLint configuration
+## Getting Started
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/your-username/foodshare.git
+   cd foodshare
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Food-Donation
+   ```bash 
+   npm install
+   npm run dev
+
+- ** Contributions are welcome! Please feel free to submit a Pull Request.
+
