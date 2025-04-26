@@ -5,6 +5,7 @@ import { AppContext } from "../context/AppContext";
 import { saveData } from "../utils/localStorage";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaUser, FaEdit, FaSave, FaTimes, FaCamera, FaHistory, FaHeart, FaHandHolding, FaMapMarkerAlt, FaPhone, FaEnvelope, FaCalendarAlt, FaCheck, FaExclamationTriangle } from "react-icons/fa";
+import "./Profile.css";
 
 export default function Profile() {
   const { user, setUser, donations, requests } = useContext(AppContext);
@@ -148,95 +149,35 @@ export default function Profile() {
   return (
     <>
       <Navbar />
-      <div className="profile-container" style={{
-        maxWidth: 1200,
-        margin: "3rem auto",
-        padding: "0 1.5rem"
-      }}>
+      <div className="profile-container">
         {/* Profile Header - Redesigned with card-like appearance */}
         <motion.div
           className="profile-header"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          style={{
-            background: "linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%)",
-            borderRadius: "1.5rem 1.5rem 0 0",
-            padding: "3rem 2.5rem",
-            color: "white",
-            display: "flex",
-            alignItems: "center",
-            gap: "2.5rem",
-            position: "relative",
-            overflow: "hidden",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.15)"
-          }}
         >
           {/* Background pattern */}
-          <div 
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: "url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')",
-              backgroundSize: "cover",
-              opacity: 0.15,
-              zIndex: 0
-            }}
-          />
+          <div className="profile-header-background" />
           
           {/* Profile Image - Enhanced with better shadows and animations */}
           <motion.div 
             className="profile-image-container" 
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
-            style={{
-              position: "relative",
-              width: 160,
-              height: 160,
-              borderRadius: "50%",
-              overflow: "hidden",
-              border: "5px solid rgba(255,255,255,0.8)",
-              boxShadow: "0 8px 25px rgba(0,0,0,0.3)",
-              zIndex: 1
-            }}
           >
             {imagePreview ? (
               <img 
                 src={imagePreview} 
                 alt="Profile" 
-                style={{ width: "100%", height: "100%", objectFit: "cover" }} 
               />
             ) : (
-              <div style={{
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#e0e0e0",
-                fontSize: "3.5rem",
-                color: "#4a5568"
-              }}>
+              <div className="profile-image-placeholder">
                 <FaUser />
               </div>
             )}
             {editMode && (
-              <label htmlFor="profile-image-input" style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                backgroundColor: "rgba(0,0,0,0.7)",
-                color: "white",
-                padding: "0.75rem 0",
-                textAlign: "center",
-                cursor: "pointer",
-                fontSize: "1.1rem",
-                transition: "all 0.3s ease"
-              }}>
+              <label htmlFor="profile-image-input" className="profile-image-upload-label">
                 <FaCamera style={{ marginRight: "0.5rem"}} />
                 <span style={{fontSize: "1rem"}}>Change Photo</span>
                 <input 
@@ -251,58 +192,26 @@ export default function Profile() {
           </motion.div>
           
           {/* User Info - Enhanced typography and spacing */}
-          <div style={{ zIndex: 1, flex: 1 }}>
-            <h1 style={{ 
-              margin: 0, 
-              fontSize: "2.75rem", 
-              fontWeight: "700",
-              textShadow: "0 2px 10px rgba(0,0,0,0.3)",
-              letterSpacing: "0.5px"
-            }}>
+          <div className="profile-user-info">
+            <h1 className="profile-user-name">
               {user?.name || "User"}
             </h1>
-            <div style={{ 
-              display: "flex", 
-              flexWrap: "wrap",
-              gap: "1rem",
-              marginTop: "1rem"
-            }}>
-              <div style={{ 
-                display: "flex", 
-                alignItems: "center", 
-                backgroundColor: "rgba(255,255,255,0.15)", 
-                padding: "0.5rem 1rem",
-                borderRadius: "2rem",
-                backdropFilter: "blur(5px)"
-              }}>
-                <FaEnvelope style={{ marginRight: "0.5rem" }} />
+            <div className="profile-user-details">
+              <div className="profile-detail-badge">
+                <FaEnvelope />
                 {user?.email || "No email provided"}
               </div>
               
               {user?.phone && (
-                <div style={{ 
-                  display: "flex", 
-                  alignItems: "center", 
-                  backgroundColor: "rgba(255,255,255,0.15)", 
-                  padding: "0.5rem 1rem",
-                  borderRadius: "2rem",
-                  backdropFilter: "blur(5px)"
-                }}>
-                  <FaPhone style={{ marginRight: "0.5rem" }} />
+                <div className="profile-detail-badge">
+                  <FaPhone />
                   {user.phone}
                 </div>
               )}
               
               {user?.address && (
-                <div style={{ 
-                  display: "flex", 
-                  alignItems: "center", 
-                  backgroundColor: "rgba(255,255,255,0.15)", 
-                  padding: "0.5rem 1rem",
-                  borderRadius: "2rem",
-                  backdropFilter: "blur(5px)"
-                }}>
-                  <FaMapMarkerAlt style={{ marginRight: "0.5rem" }} />
+                <div className="profile-detail-badge">
+                  <FaMapMarkerAlt />
                   {user.address}
                 </div>
               )}
@@ -311,39 +220,21 @@ export default function Profile() {
           
           {/* Stats - Redesigned with card-like appearance */}
           {stats && (
-            <div style={{ 
-              display: "flex", 
-              gap: "1.5rem",
-              zIndex: 1
-            }}>
+            <div className="profile-stats">
               <motion.div 
+                className="profile-stat-card"
                 whileHover={{ y: -5 }}
-                style={{ 
-                  textAlign: "center",
-                  backgroundColor: "rgba(255,255,255,0.15)",
-                  padding: "1rem 1.5rem",
-                  borderRadius: "1rem",
-                  backdropFilter: "blur(5px)",
-                  boxShadow: "0 4px 15px rgba(0,0,0,0.1)"
-                }}
               >
-                <div style={{ fontSize: "2.5rem", fontWeight: "bold" }}>{stats.totalDonations}</div>
-                <div style={{ fontSize: "1.1rem" }}>Donations</div>
+                <div className="profile-stat-number">{stats.totalDonations}</div>
+                <div className="profile-stat-label">Donations</div>
               </motion.div>
               
               <motion.div 
+                className="profile-stat-card"
                 whileHover={{ y: -5 }}
-                style={{ 
-                  textAlign: "center",
-                  backgroundColor: "rgba(255,255,255,0.15)",
-                  padding: "1rem 1.5rem",
-                  borderRadius: "1rem",
-                  backdropFilter: "blur(5px)",
-                  boxShadow: "0 4px 15px rgba(0,0,0,0.1)"
-                }}
               >
-                <div style={{ fontSize: "2.5rem", fontWeight: "bold" }}>{stats.totalRequests}</div>
-                <div style={{ fontSize: "1.1rem" }}>Requests</div>
+                <div className="profile-stat-number">{stats.totalRequests}</div>
+                <div className="profile-stat-label">Requests</div>
               </motion.div>
             </div>
           )}
@@ -355,35 +246,13 @@ export default function Profile() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          style={{
-            display: "flex",
-            background: "white",
-            padding: "0 1rem",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.05)"
-          }}
         >
           {["profile", "donations", "requests", "activity"].map((tab) => (
             <motion.button
               key={tab}
               onClick={() => setActiveTab(tab)}
               whileHover={{ backgroundColor: "#f7fafc" }}
-              style={{
-                flex: 1,
-                padding: "1.25rem 1rem",
-                border: "none",
-                background: "none",
-                borderBottom: activeTab === tab ? "3px solid #8e2de2" : "none",
-                color: activeTab === tab ? "#8e2de2" : "#4a5568",
-                fontWeight: activeTab === tab ? "bold" : "normal",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                textTransform: "capitalize",
-                fontSize: "1.1rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.5rem"
-              }}
+              className={`profile-tab-button ${activeTab === tab ? 'active' : ''}`}
             >
               {tab === "profile" && <FaUser />}
               {tab === "donations" && <FaHeart />}
@@ -395,15 +264,7 @@ export default function Profile() {
         </motion.div>
 
         {/* Content Area - Enhanced with better spacing and shadows */}
-        <motion.div
-          className="profile-content"
-          style={{
-            background: "white",
-            padding: "2.5rem",
-            borderRadius: "0 0 1.5rem 1.5rem",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.1)"
-          }}
-        >
+        <motion.div className="profile-content">
           <AnimatePresence mode="wait">
             {activeTab === "profile" && (
               <motion.div
@@ -414,188 +275,89 @@ export default function Profile() {
                 exit="exit"
               >
                 {editMode ? (
-                  <div className="profile-form" style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                    gap: "2rem",
-                    backgroundColor: "#f8fafc",
-                    padding: "2rem",
-                    borderRadius: "1rem",
-                    boxShadow: "inset 0 2px 10px rgba(0,0,0,0.05)"
-                  }}>
+                  <div className="profile-form">
                     {/* <div style={{ marginBottom: "2rem" }}></div> */}
                     <div className="form-group">
-                      <label style={{ display: "block", marginBottom: "0.75rem", fontWeight: "bold", color: "#1a365d", fontSize: "1.1rem" }}>
+                      <label className="form-label">
                         Name:
                         <input
                           type="text"
                           name="name"
                           value={form.name}
                           onChange={handleChange}
-                          style={{
-                            display: "block",
-                            width: "90%",
-                            padding: "0.9rem 1rem",
-                            borderRadius: "0.75rem",
-                            border: errors.name ? "2px solid #c62828" : "2px solid #cbd5e0",
-                            marginTop: "0.5rem",
-                            marginRight:"0.5rem",
-                            fontSize: "1.1rem",
-                            backgroundColor: "white",
-                            boxShadow: "0 2px 5px rgba(0,0,0,0.05)",
-                            transition: "all 0.3s ease"
-                          }}
+                          className={`form-input ${errors.name ? 'error' : ''}`}
                         />
-                        {errors.name && <p style={{ color: "#c62828", margin: "0.5rem 0 0", fontSize: "0.9rem", display: "flex", alignItems: "center", gap: "0.25rem" }}><FaExclamationTriangle /> {errors.name}</p>}
+                        {errors.name && <p className="form-error"><FaExclamationTriangle /> {errors.name}</p>}
                       </label>
                     </div>
                     
                     <div className="form-group">
-                      <label style={{ display: "block", marginBottom: "0.75rem", fontWeight: "bold", color: "#1a365d", fontSize: "1.1rem" }}>
+                      <label className="form-label">
                         Email:
                         <input
                           type="email"
                           name="email"
                           value={form.email}
                           onChange={handleChange}
-                          style={{
-                            display: "block",
-                            width: "90%",
-                            padding: "0.9rem 1rem",
-                            borderRadius: "0.75rem",
-                            border: errors.email ? "2px solid #c62828" : "2px solid #cbd5e0",
-                            marginTop: "0.5rem",
-                            fontSize: "1.1rem",
-                            backgroundColor: "white",
-                            boxShadow: "0 2px 5px rgba(0,0,0,0.05)",
-                            transition: "all 0.3s ease"
-                          }}
+                          className={`form-input ${errors.email ? 'error' : ''}`}
                         />
-                        {errors.email && <p style={{ color: "#c62828", margin: "0.5rem 0 0", fontSize: "0.9rem", display: "flex", alignItems: "center", gap: "0.25rem" }}><FaExclamationTriangle /> {errors.email}</p>}
+                        {errors.email && <p className="form-error"><FaExclamationTriangle /> {errors.email}</p>}
                       </label>
                     </div>
                     
                     <div className="form-group">
-                      <label style={{ display: "block", marginBottom: "0.75rem", fontWeight: "bold", color: "#1a365d", fontSize: "1.1rem" }}>
+                      <label className="form-label">
                         Phone:
                         <input
                           type="tel"
                           name="phone"
                           value={form.phone}
                           onChange={handleChange}
-                          style={{
-                            display: "block",
-                            width: "90%",
-                            padding: "0.9rem 1rem",
-                            borderRadius: "0.75rem",
-                            border: errors.phone ? "2px solid #c62828" : "2px solid #cbd5e0",
-                            marginTop: "0.5rem",
-                            fontSize: "1.1rem",
-                            backgroundColor: "white",
-                            boxShadow: "0 2px 5px rgba(0,0,0,0.05)",
-                            transition: "all 0.3s ease"
-                          }}
+                          className={`form-input ${errors.phone ? 'error' : ''}`}
                         />
-                        {errors.phone && <p style={{ color: "#c62828", margin: "0.5rem 0 0", fontSize: "0.9rem", display: "flex", alignItems: "center", gap: "0.25rem" }}><FaExclamationTriangle /> {errors.phone}</p>}
+                        {errors.phone && <p className="form-error"><FaExclamationTriangle /> {errors.phone}</p>}
                       </label>
                     </div>
                     
                     <div className="form-group">
-                      <label style={{ display: "block", marginBottom: "0.75rem", fontWeight: "bold", color: "#1a365d", fontSize: "1.1rem" }}>
+                      <label className="form-label">
                         Address:
                         <input
                           type="text"
                           name="address"
                           value={form.address}
                           onChange={handleChange}
-                          style={{
-                            display: "block",
-                            width: "90%",
-                            padding: "0.9rem 1rem",
-                            borderRadius: "0.75rem",
-                            border: "2px solid #cbd5e0",
-                            marginTop: "0.5rem",
-                            fontSize: "1.1rem",
-                            backgroundColor: "white",
-                            boxShadow: "0 2px 5px rgba(0,0,0,0.05)",
-                            transition: "all 0.3s ease"
-                          }}
+                          className="form-input"
                         />
                       </label>
                     </div>
                     
                     <div className="form-group" style={{ gridColumn: "1 / -1" }}>
-                      <label style={{ display: "block", marginBottom: "0.75rem", fontWeight: "bold", color: "#1a365d", fontSize: "1.1rem" }}>
+                      <label className="form-label">
                         Bio:
                         <textarea
                           name="bio"
                           value={form.bio}
                           onChange={handleChange}
                           rows={4}
-                          style={{
-                            display: "block",
-                            width: "95%",
-                            padding: "0.9rem 1rem",
-                            borderRadius: "0.75rem",
-                            border: "2px solid #cbd5e0",
-                            marginTop: "0.5rem",
-                            fontSize: "1.1rem",
-                            resize: "vertical",
-                            backgroundColor: "white",
-                            boxShadow: "0 2px 5px rgba(0,0,0,0.05)",
-                            transition: "all 0.3s ease",
-                            lineHeight: "1.6"
-                          }}
+                          className="form-input form-textarea"
                         />
                       </label>
                     </div>
                     
-                    <div className="form-actions" style={{ gridColumn: "1 / -1", display: "flex", gap: "1rem", marginTop: "1.5rem", justifyContent: "flex-end" }}>
-                      <motion.button 
-                        onClick={handleSave}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "0.5rem",
-                          padding: "0.9rem 2rem",
-                          backgroundColor: "#8e2de2",
-                          color: "white",
-                          border: "none",
-                          borderRadius: "0.75rem",
-                          cursor: "pointer",
-                          fontWeight: "bold",
-                          fontSize: "1.1rem",
-                          boxShadow: "0 4px 15px rgba(142, 45, 226, 0.4)",
-                          transition: "all 0.3s ease"
-                        }}
-                      >
-                        <FaSave /> Save Changes
-                      </motion.button>
-                      
-                      <motion.button 
-                        onClick={() => setEditMode(false)}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "0.5rem",
-                          padding: "0.9rem 2rem",
-                          backgroundColor: "#e2e8f0",
-                          color: "#4a5568",
-                          border: "none",
-                          borderRadius: "0.75rem",
-                          cursor: "pointer",
-                          fontWeight: "bold",
-                          fontSize: "1.1rem",
-                          boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
-                          transition: "all 0.3s ease"
-                        }}
+                    <div className="profile-actions" style={{ gridColumn: "1 / -1" }}>
+                      <button 
+                        onClick={() => setEditMode(false)} 
+                        className="btn btn-secondary"
                       >
                         <FaTimes /> Cancel
-                      </motion.button>
+                      </button>
+                      <button 
+                        onClick={handleSave} 
+                        className="btn btn-primary"
+                      >
+                        <FaSave /> Save Changes
+                      </button>
                     </div>
                   </div>
                 ) : (
@@ -773,29 +535,13 @@ export default function Profile() {
                       )}
                     </motion.div>
                     
-                    <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "1.5rem" }}>
-                      <motion.button
-                        onClick={() => setEditMode(true)}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "0.5rem",
-                          padding: "0.9rem 2rem",
-                          backgroundColor: "#8e2de2",
-                          color: "white",
-                          border: "none",
-                          borderRadius: "0.75rem",
-                          cursor: "pointer",
-                          fontWeight: "bold",
-                          fontSize: "1.1rem",
-                          boxShadow: "0 4px 15px rgba(142, 45, 226, 0.4)",
-                          transition: "all 0.3s ease"
-                        }}
+                    <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "2rem" }}>
+                      <button 
+                        onClick={() => setEditMode(true)} 
+                        className="btn btn-secondary"
                       >
                         <FaEdit /> Edit Profile
-                      </motion.button>
+                      </button>
                     </div>
                   </div>
                 )}
