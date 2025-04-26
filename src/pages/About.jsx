@@ -148,7 +148,7 @@ export default function About() {
                 }}
               >
                 {[
-                  { name: "Muzakkir Mahbub ", role: "Founder & Developer", emoji: "👨‍💻" },
+                  { name: "Aditya Vats ", role: "Founder & Developer", emoji: "👨‍💻" },
                   { name: "Volunteers", role: "& Contributors", emoji: "👥" }
                 ].map((member, index) => (
                   <motion.div 
@@ -189,7 +189,7 @@ export default function About() {
               </motion.div>
             </div>
             
-            <div>
+            {/* <div>
               <h3 style={{ 
                 color: "#a5b4fc", 
                 marginBottom: "1.5rem",
@@ -235,7 +235,7 @@ export default function About() {
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>
