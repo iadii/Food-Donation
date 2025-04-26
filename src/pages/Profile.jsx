@@ -760,8 +760,8 @@ export default function Profile() {
                                   {activity.type === "donation" ? <FaHeart color="#e91e63" /> : <FaHandHolding color="#2196f3" />}
                                   <span>{activity.type === "donation" ? "Donated" : "Requested"} {activity.item || activity.title}</span>
                                   <span style={{ marginLeft: "auto", fontSize: "0.9rem", opacity: 0.8 }}>
-                                    <FaCalendarAlt style={{ marginRight: "0.25rem" }} />
-                                    {formatDate(activity.date)}
+                                    {/* <FaCalendarAlt style={{ marginRight: "0.25rem" }} />  */}
+                                    {/* {formatDate(activity.date)} */}
                                   </span>
                                 </div>
                               ))
