@@ -182,20 +182,22 @@ export default function Landing() {
             </Link>
           </motion.div>
           
-          <motion.div 
+          {/* <motion.div 
             className="hero-scroll-indicator"
             animate={{ 
-              y: [0, 10, 0], 
-              opacity: [0.6, 1, 0.6] 
+              y: [70, 70, 36],
+              opacity: [0.4, 1, 0.4]
             }}
             transition={{ 
-              repeat: Infinity, 
-              duration: 2 
+              repeat: Infinity,
+              duration: 5,
+              ease: "easeInOut",
+              times: [0, 0.5, 1]
             }}
           >
             <span>Scroll to learn more</span>
             <div className="scroll-arrow">↓</div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </motion.section>
       
