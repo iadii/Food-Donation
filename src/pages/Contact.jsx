@@ -253,7 +253,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 style={{ color: "#a5b4fc", marginBottom: "0.25rem", fontSize: "1rem" }}>Email Us</h3>
-                <span>support@mujibhai.org</span>
+                <span>mishraaditya@live.com</span>
               </div>
             </motion.div>
             
@@ -284,7 +284,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 style={{ color: "#a5b4fc", marginBottom: "0.25rem", fontSize: "1rem" }}>Call Us</h3>
-                <span>+1 (555) 123-4567</span>
+                <span>+91 9771893609</span>
               </div>
             </motion.div>
             
@@ -315,7 +315,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 style={{ color: "#a5b4fc", marginBottom: "0.25rem", fontSize: "1rem" }}>Visit Us</h3>
-                <span>123 Food Drive, Charity City, CA 90210</span>
+                <span>Noida 63</span>
               </div>
             </motion.div>
           </div>
