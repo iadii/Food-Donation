@@ -812,6 +812,7 @@ export default function Profile() {
               >
                 <h2 style={{ borderBottom: "2px solid #2575fc", paddingBottom: "0.5rem", marginBottom: "1.5rem" , color:"#4a5568"
 
+
                 }}>My Donations</h2>
                 
                 {stats && Object.keys(stats.donationTypes).length > 0 && (
@@ -965,7 +966,9 @@ export default function Profile() {
                 animate="visible"
                 exit="exit"
               >
+
                 <h2 style={{ borderBottom: "2px solid #2575fc", paddingBottom: "0.5rem", marginBottom: "1.5rem", color:"#4a5568" }}>My Requests</h2>
+
                 {requests && requests.length > 0 ? (
                   <div className="requests-grid" style={{
                     display: "grid",
@@ -1043,7 +1046,9 @@ export default function Profile() {
                 animate="visible"
                 exit="exit"
               >
+
                 <h2 style={{ borderBottom: "2px solid #2575fc", paddingBottom: "0.5rem", marginBottom: "1.5rem", color:"#4a5568" }}>Recent Activity</h2>
+
                 <div className="activity-timeline" style={{
                   position: "relative",
                   paddingLeft: "2rem",
@@ -1127,7 +1132,9 @@ export default function Profile() {
       <div>
         <h4 style={{ color: "#2575fc", marginBottom: "1rem" }}>Donation Types</h4>
         {Object.entries(stats.donationTypes).map(([type, count]) => (
+
           <div key={type} style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem", color:"#4a5568" }}>
+
             <span>{type}:</span>
             <span>{count}</span>
           </div>
@@ -1147,8 +1154,10 @@ export default function Profile() {
           }}>
             {activity.type === 'donation' ? <FaHeart style={{ color: "#e91e63", marginRight: "0.5rem" }} /> : <FaHandHolding style={{ color: "#2196f3", marginRight: "0.5rem" }} />}
             <div style={{ flex: 1 }}>
+
               <div style={{ fontWeight: "500", color:"#4a5568" }}>{activity.title}</div>
-              <div style={{ fontSize: "0.875rem", color: "#666" }}>{formatDate(activity.date)}</div>
+
+
             </div>
             <div style={{
               padding: "0.25rem 0.75rem",
